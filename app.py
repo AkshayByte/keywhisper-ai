@@ -6,6 +6,7 @@ import random
 import math
 from flask import Flask, render_template, jsonify, request, send_file
 from werkzeug.utils import secure_filename
+from jinja2 import TemplateNotFound
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -52,7 +53,10 @@ def index(): return render_template('index.html')
 
 @app.route('/<page>')
 def pages(page):
-    return render_template(f'{page}')
+    try:
+        return render_template(f'{page}')
+    except TemplateNotFound:
+        return jsonify({'error': f'Page "{page}" not found'}), 404
 
 @app.route('/api/spectrogram')
 def api_spectrogram():
@@ -97,9 +101,15 @@ def api_training_status():
 
 @app.route('/api/upload', methods=['POST'])
 def api_upload():
+    # Validate that a file field exists and is not empty
+    if 'file' not in request.files or request.files['file'].filename == '':
+        return jsonify({'error': 'No file selected. Please attach a file to the request.'}), 400
     f = request.files['file']
-    f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
-    return jsonify({'msg': 'File Ingested for Analysis'})
+    filename = secure_filename(f.filename)
+    if not filename:
+        return jsonify({'error': 'Invalid filename after sanitization.'}), 400
+    f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    return jsonify({'msg': f'File "{filename}" ingested for analysis'})
 
 @app.route('/api/export_report')
 def export_report():
