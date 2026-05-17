@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EM-Analyst - Model Configuration</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0;600;700&amp;family=Noto+Sans:wght@400;<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a1d24",
+                        "border-dark": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom range slider styling for webkit */
+        input[type=range] {
+            height: 4px;
+            background: #232f48;
+            border-radius: 2px;
+            background-image: linear-gradient(#135bec, #135bec);
+            background-repeat: no-repeat;
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: <input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">%;
+            background: #135bec;
+            cursor: pointer;
+            box-shadow: 0 0 0 2px #101622;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-border-dark px-6 py-3 bg-background-dark">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">waves</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">EM-Analyst</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 hidden md:flex">
+<div class="flex items-center gap-6">
+<a class="text-gray-400 hover:text-white transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-white text-sm font-medium" href="#">Model Config</a>
+<a class="text-gray-400 hover:text-white transition-colors text-sm font-medium" href="#">Live Analysis</a>
+<a class="text-gray-400 hover:text-white transition-colors text-sm font-medium" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 ring-2 ring-primary/20" data-alt="User profile avatar gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYM-Sm-YkNLXThn5njHEqsk6HPCLm7cP2ZvA2-Yr5DLTkeCxvsI4BzRRTvWrGMfyj8ekxqInVl_rOCtrgk4OCzdjUmRHB6YXsxkTNWMwJG54ZMQ-xrkXjS8-eGPCwgd1O8d-DjvIDVUf6Pi_XjY2cDXuxC5hayo6RK0bptsOeImgqF0__uvsxG_7PDxW_Hul7MvO3KSSQXc5FEW3cUMwedqG_1S2EBANtnAgD3caoyHXaGaOoPYrYtRplC_HNzwivWENDS5vysXUw");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col items-center py-8 px-4 sm:px-8">
+<div class="w-full max-w-[1200px] flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4 pb-4 border-b border-border-dark">
+<div class="flex min-w-72 flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">tune</span>
+<h1 class="text-white text-3xl md:text-4xl font-bold tracking-tight">Model Configuration</h1>
+</div>
+<p class="text-[#92a4c9] text-sm md:text-base max-w-2xl">
+                        Define neural network architecture and training parameters for analyzing electromagnetic side-channel leakages.
+                    </p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-surface-dark border border-border-dark hover:bg-[#232f48] text-white text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+<span>Load Preset</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-surface-dark border border-border-dark hover:bg-[#232f48] text-white text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-lg">save</span>
+<span>Save Config</span>
+</button>
+</div>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Architecture (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Model Type Selection -->
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-bold">Base Architecture</h3>
+<div class="flex h-12 w-full items-center justify-center rounded-lg bg-surface-dark p-1 border border-border-dark">
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded px-2 has-[:checked]:bg-primary has-[:checked]:text-white text-[#92a4c9] text-sm font-medium transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">memory</span> LSTM Network</span>
+<input checked="" class="hidden" name="model_type" type="radio" value="LSTM"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded px-2 has-[:checked]:bg-primary has-[:checked]:text-white text-[#92a4c9] text-sm font-medium transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">grid_view</span> CNN Architecture</span>
+<input class="hidden" name="model_type" type="radio" value="CNN"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded px-2 has-[:checked]:bg-primary has-[:checked]:text-white text-[#92a4c9] text-sm font-medium transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">hub</span> Transformer</span>
+<input class="hidden" name="model_type" type="radio" value="Transformer"/>
+</label>
+</div>
+</div>
+<!-- Network Topology Builder -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-white text-lg font-bold">Network Topology</h3>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:text-blue-400">
+<span class="material-symbols-outlined text-base">add</span> Add Layer
+                            </button>
+</div>
+<!-- Input Layer (Read Only) -->
+<div class="relative bg-surface-dark rounded-lg border border-border-dark p-4 flex flex-col gap-3 opacity-80">
+<div class="flex justify-between items-center border-b border-border-dark pb-2">
+<div class="flex items-center gap-2 text-white font-bold">
+<span class="material-symbols-outlined text-[#92a4c9]">input</span>
+                                    Input Layer
+                                </div>
+<span class="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">Fixed</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-[#92a4c9] text-xs uppercase font-bold tracking-wider">Input Shape</label>
+<p class="text-white font-mono mt-1">(100, 1)</p>
+<p class="text-xs text-gray-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0 mt-1">Time steps × Features</p>
+</div>
+<div>
+<label class="text-[#92a4c9] text-xs uppercase font-bold tracking-wider">Data Type</label>
+<p class="text-white font-mono mt-1">float32</p>
+</div>
+</div>
+</div>
+<!-- Configurable Layer 1 -->
+<div class="relative bg-surface-dark rounded-lg border border-l-4 border-l-primary border-y-border-dark border-r-border-dark p-4 flex flex-col gap-4 transition-all hover:border-l-blue-400 shadow-lg shadow-black/20">
+<div class="flex justify-between items-center border-b border-border-dark pb-3">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-1.5 rounded text-primary">
+<span class="material-symbols-outlined text-lg">layers</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm">LSTM Layer 1</h4>
+<p class="text-xs text-gray-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0">Recurrent Processing</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1 text-gray-400 hover:text-white"><span class="material-symbols-outlined">expand_less</span></button>
+<button class="p-1 text-gray-400 hover:text-red-400"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-[#92a4c9] text-xs font-medium">Units</label>
+<input class="bg-background-dark border border-border-dark rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full" type="number" value="128"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[#92a4c9] text-xs font-medium">Activation</label>
+<select class="bg-background-dark border border-border-dark rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full appearance-none">
+<option>tanh</option>
+<option>relu</option>
+<option>sigmoid</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[#92a4c9] text-xs font-medium">Return Sequences</label>
+<select class="bg-background-dark border border-border-dark rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full appearance-none">
+<option>True</option>
+<option>False</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Configurable Layer 2 -->
+<div class="relative bg-surface-dark rounded-lg border border-l-4 border-l-purple-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0 border-y-border-dark border-r-border-dark p-4 flex flex-col gap-4 transition-all hover:border-l-purple-400 shadow-lg shadow-black/20">
+<div class="flex justify-between items-center border-b border-border-dark pb-3">
+<div class="flex items-center gap-3">
+<div class="bg-purple-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0/20 p-1.5 rounded text-purple-400">
+<span class="material-symbols-outlined text-lg">blur_on</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm">Dropout</h4>
+<p class="text-xs text-gray-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0">Regularization</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1 text-gray-400 hover:text-white"><span class="material-symbols-outlined">expand_less</span></button>
+<button class="p-1 text-gray-400 hover:text-red-400"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-[#92a4c9] text-xs font-medium">Rate (0.0 - 1.0)</label>
+<div class="flex items-center gap-2">
+<input class="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" max="1" min="0" step="0.1" type="range" value="0.2"/>
+<span class="text-white text-sm font-mono w-8">0.2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Configurable Layer 3 -->
+<div class="relative bg-surface-dark rounded-lg border border-l-4 border-l-emerald-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0 border-y-border-dark border-r-border-dark p-4 flex flex-col gap-4 transition-all hover:border-l-emerald-400 shadow-lg shadow-black/20">
+<div class="flex justify-between items-center border-b border-border-dark pb-3">
+<div class="flex items-center gap-3">
+<div class="bg-emerald-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0/20 p-1.5 rounded text-emerald-400">
+<span class="material-symbols-outlined text-lg">output</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm">Dense (Output)</h4>
+<p class="text-xs text-gray-<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0">Classification</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1 text-gray-400 hover:text-white"><span class="material-symbols-outlined">expand_less</span></button>
+<button class="p-1 text-gray-400 hover:text-red-400"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-[#92a4c9] text-xs font-medium">Units (Classes)</label>
+<input class="bg-background-dark border border-border-dark rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full" type="number" value="26"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[#92a4c9] text-xs font-medium">Activation</label>
+<select class="bg-background-dark border border-border-dark rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full appearance-none">
+<option selected="">Softmax</option>
+<option>Sigmoid</option>
+<option>Linear</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Training & Data (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Dataset Management -->
+<div class="flex flex-col gap-4 bg-surface-dark p-5 rounded-lg border border-border-dark">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">database</span>
+<h3 class="text-white text-lg font-bold">Training Dataset</h3>
+</div>
+<!-- Dropzone -->
+<div class="border-2 border-dashed border-[#324467] rounded-lg p-6 flex flex-col items-center justify-center gap-2 hover:bg-[#232f48]/<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center"> transition-colors cursor-pointer group">
+<div class="size-10 rounded-full bg-[#232f48] flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors text-[#92a4c9]">
+<span class="material-symbols-outlined">upload</span>
+</div>
+<div class="text-center">
+<p class="text-white text-sm font-medium">Click to upload trace data</p>
+<p class="text-[#92a4c9] text-xs">.csv, .h5, or .npy (Max <input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0MB)</p>
+</div>
+</div>
+<!-- Existing Data Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-[#92a4c9] text-xs font-medium uppercase">Active Dataset</label>
+<div class="relative">
+<select class="w-full bg-background-dark border border-border-dark rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none">
+<option>EM_Logitech_K120_Keystrokes_v2</option>
+<option>EM_Apple_Magic_Keyboard_v1</option>
+<option>Noise_Floor_Baseline_Office</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Split Stats -->
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="bg-background-dark p-3 rounded border border-border-dark">
+<p class="text-[#92a4c9] text-xs">Samples</p>
+<p class="text-white font-bold text-lg">14,<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">0</p>
+</div>
+<div class="bg-background-dark p-3 rounded border border-border-dark">
+<p class="text-[#92a4c9] text-xs">Classes</p>
+<p class="text-white font-bold text-lg">26</p>
+</div>
+</div>
+</div>
+<!-- Hyperparameters <span id="training-status-text" class="text-xs text-blue-400 ml-2"></span> -->
+<div class="flex flex-col gap-4 bg-surface-dark p-5 rounded-lg border border-border-dark">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">tune</span>
+<h3 class="text-white text-lg font-bold">Hyperparameters <span id="training-status-text" class="text-xs text-blue-400 ml-2"></span></h3>
+</div>
+<!-- Optimizer -->
+<div class="flex flex-col gap-2">
+<label class="text-[#92a4c9] text-xs font-medium uppercase">Optimizer</label>
+<div class="relative">
+<select class="w-full bg-background-dark border border-border-dark rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none">
+<option>Adam (Adaptive Moment Estimation)</option>
+<option>SGD (Stochastic Gradient Descent)</option>
+<option>RMSprop</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Learning Rate -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex justify-between items-center">
+<label class="text-[#92a4c9] text-xs font-medium uppercase">Learning Rate</label>
+<input class="bg-background-dark border border-border-dark rounded px-2 py-1 text-white text-xs w-20 text-right focus:outline-none focus:border-primary" step="0.0001" type="number" value="0.001"/>
+</div>
+<input class="w-full h-1.5 bg-background-dark rounded-lg appearance-none cursor-pointer" max="-1" min="-5" step="0.1" type="range" value="-3"/>
+<div class="flex justify-between text-[#5c6b87] text-[10px] font-mono">
+<span>1e-5</span>
+<span><input type="text" id="input-lr" value="0.001" class="bg-transparent w-full text-center"></span>
+<span>1e-1</span>
+</div>
+</div>
+<!-- Epochs -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex justify-between items-center">
+<label class="text-[#92a4c9] text-xs font-medium uppercase">Epochs</label>
+<span class="text-white text-sm font-bold font-mono"><input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center"></span>
+</div>
+<input class="w-full h-1.5 bg-background-dark rounded-lg appearance-none cursor-pointer" max="200" min="1" step="1" type="range" value="<input type="number" id="input-epochs" value="50" class="bg-transparent w-full text-center">"/>
+</div>
+<!-- Batch Size -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex justify-between items-center">
+<label class="text-[#92a4c9] text-xs font-medium uppercase">Batch Size</label>
+<span class="text-white text-sm font-bold font-mono">64</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1 rounded bg-background-dark border border-border-dark text-[#92a4c9] text-xs hover:bg-[#232f48] hover:text-white transition-colors">32</button>
+<button class="flex-1 py-1 rounded bg-primary text-white text-xs border border-primary font-bold">64</button>
+<button class="flex-1 py-1 rounded bg-background-dark border border-border-dark text-[#92a4c9] text-xs hover:bg-[#232f48] hover:text-white transition-colors">128</button>
+<button class="flex-1 py-1 rounded bg-background-dark border border-border-dark text-[#92a4c9] text-xs hover:bg-[#232f48] hover:text-white transition-colors">256</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 flex flex-col gap-3 sticky bottom-0 bg-background-dark/95 backdrop-blur-sm p-4 -mx-4 lg:mx-0 lg:p-0 lg:static z-10 border-t border-border-dark lg:border-none">
+<button class="w-full h-12 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg shadow-[0_0_15px_rgba(19,91,236,0.5)] transition-all transform hover:scale-[1.01] flex items-center justify-center gap-2 text-lg">
+<span class="material-symbols-outlined">play_arrow</span>
+                            Start Training Model
+                        </button>
+<div class="flex gap-3">
+<button class="flex-1 h-10 bg-surface-dark border border-border-dark text-[#92a4c9] font-medium rounded-lg hover:text-white hover:bg-[#232f48] transition-colors text-sm">
+                                Reset Defaults
+                            </button>
+<button class="flex-1 h-10 bg-surface-dark border border-border-dark text-[#92a4c9] font-medium rounded-lg hover:text-white hover:bg-[#232f48] transition-colors text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                Preview Graph
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decoration Grid -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#324467 1px, transparent 1px), linear-gradient(to right, #324467 1px, transparent 1px); background-size: 40px 40px;">
+</div>
+<script src="/static/js/main.js"></script>
+</body></html>

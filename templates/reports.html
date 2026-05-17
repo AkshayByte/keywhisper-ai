@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EM-Guard AI - Reports &amp; Export</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2332",
+                        "surface-dark-lighter": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        /* Custom scrollbar for a tech feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-gray-900 dark:text-gray-100 flex flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="h-16 border-b border-gray-200 dark:border-surface-dark-lighter bg-white dark:bg-background-dark flex items-center justify-between px-6 shrink-0 z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">radar</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight uppercase">EM-Guard AI</h2>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-8">
+<a class="text-gray-500 dark:text-gray-400 hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-primary text-sm font-medium transition-colors" href="#">Live Analysis</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary py-5" href="#">Reports</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded bg-surface-dark-lighter/50 border border-primary/20">
+<span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-mono text-gray-400">AI ENGINE: ACTIVE</span>
+</div>
+<div class="relative w-64 hidden sm:block">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined text-[20px]">search</span>
+<input class="w-full bg-gray-100 dark:bg-surface-dark-lighter border-none rounded-lg pl-10 pr-4 py-2 text-sm text-gray-900 dark:text-white focus:ring-1 focus:ring-primary placeholder-gray-500" placeholder="Search analysis IDs..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button id="btn-refresh-reports" class="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">Analyze</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-surface-dark-lighter/30 transition-colors group">
+<td class="px-6 py-4 text-xs font-mono text-gray-500">02</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-surface-dark border border-surface-dark-lighter flex items-center justify-center text-lg font-bold font-mono text-white shadow-sm">a</div>
+<span class="text-xs text-gray-400">Key Code: 65</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-green-400 w-[95%]"></div>
+</div>
+<span class="text-xs font-bold text-green-400">95%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-gray-300">10:02:42.105</td>
+<td class="px-6 py-4">
+<div class="h-8 w-24 bg-surface-dark rounded flex items-center justify-center border border-surface-dark-lighter opacity-70 group-hover:opacity-100 transition-opacity">
+<svg fill="none" height="20" viewbox="0 0 80 20" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 10H15L20 4L25 16L30 8L35 12L40 10H80" stroke="#135bec" stroke-opacity="0.8" stroke-width="1.5"></path>
+</svg>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button id="btn-refresh-reports" class="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">Analyze</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-surface-dark-lighter/30 transition-colors group">
+<td class="px-6 py-4 text-xs font-mono text-gray-500">03</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-surface-dark border border-surface-dark-lighter flex items-center justify-center text-lg font-bold font-mono text-white shadow-sm">s</div>
+<span class="text-xs text-gray-400">Key Code: 83</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[91%]"></div>
+</div>
+<span class="text-xs font-bold text-primary">91%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-gray-300">10:02:42.890</td>
+<td class="px-6 py-4">
+<div class="h-8 w-24 bg-surface-dark rounded flex items-center justify-center border border-surface-dark-lighter opacity-70 group-hover:opacity-100 transition-opacity">
+<svg fill="none" height="20" viewbox="0 0 80 20" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 10H20L25 6L30 14L35 10H80" stroke="#135bec" stroke-opacity="0.6" stroke-width="1.5"></path>
+</svg>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button id="btn-refresh-reports" class="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">Analyze</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-surface-dark-lighter/30 transition-colors group">
+<td class="px-6 py-4 text-xs font-mono text-gray-500">04</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-surface-dark border border-surface-dark-lighter flex items-center justify-center text-lg font-bold font-mono text-white shadow-sm">w</div>
+<span class="text-xs text-gray-400">Key Code: 87</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 w-[78%]"></div>
+</div>
+<span class="text-xs font-bold text-yellow-500">78%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-gray-300">10:02:43.112</td>
+<td class="px-6 py-4">
+<div class="h-8 w-24 bg-surface-dark rounded flex items-center justify-center border border-surface-dark-lighter opacity-70 group-hover:opacity-100 transition-opacity">
+<svg fill="none" height="20" viewbox="0 0 80 20" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 10H10L15 8L20 12L25 10H80" stroke="#eab308" stroke-opacity="0.8" stroke-width="1.5"></path>
+</svg>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button id="btn-refresh-reports" class="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">Analyze</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-gray-200 dark:border-surface-dark-lighter flex items-center justify-between">
+<span class="text-xs text-gray-500">Showing 1-4 of 52 results</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs rounded border border-surface-dark-lighter text-gray-400 hover:text-white hover:bg-surface-dark-lighter disabled:opacity-50">Prev</button>
+<button class="px-3 py-1 text-xs rounded border border-surface-dark-lighter text-white bg-primary hover:bg-primary/90">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script src="/static/js/main.js"></script>
+</body></html>
